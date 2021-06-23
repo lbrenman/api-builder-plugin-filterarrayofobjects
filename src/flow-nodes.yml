@@ -1,0 +1,49 @@
+flow-nodes:
+  filterarrayofobjects:
+    name: Filter Array of Objects
+    icon: icon.svg
+    description: Filter object array by key value. Value must be string or Number. Returns an array.
+    category: extension
+    methods:
+      filter: # This same key is used in `actions.js`
+        name: Filter
+        description: Filter object array by key value. Value must be string or Number. Returns an array.
+        parameters:
+          array:
+            name: Array
+            description: The array to filter.
+            required: true
+            initialType: array
+            schema:
+              type: array
+          key:
+            name: Key
+            description: The key to filter on.
+            required: true
+            initialType: string
+            schema:
+              type: string
+          value:
+            name: Value
+            description: The value of the key to filter (string or number).
+            required: true
+            initialType: string
+            schema:
+              type: string
+        # "Next" (next) output
+        returns:
+          name: Next
+          description: The operation was successful.
+          context: $.filterArraySuccess
+          schema:
+            type: array
+        # "Error" (error) output
+        throws:
+          name: Error
+          description: An unexpected error was encountered.
+          context: $.filterArrayError
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
